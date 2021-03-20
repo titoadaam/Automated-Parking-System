@@ -47,18 +47,36 @@ print("==========================================================")
 
 #BIAYA PARKIR RODA 2
 if tipe_kendaraan == "Roda 2" :
-    if lama_parkir < 24 :
-        total_yang_harus_dibayar = 6000
+    if lama_parkir <= 24 :
+        total_yang_harus_dibayar = 3000
     else :
         total_yang_harus_dibayar = (hari * 25000)
 
 #BIAYA PARKIR RODA 4
 elif tipe_kendaraan == "Roda 4" :
-    print("Masih Dalam Proses Pengerjaan")
+    if lama_parkir <= 1 :
+        total_yang_harus_dibayar = 6000
+    elif lama_parkir <= 5 :
+        print("Lupa Rumus")
+    elif lama_parkir <= 12 :
+        total_yang_harus_dibayar = 25000
+    elif lama_parkir <= 24 :
+        total_yang_harus_dibayar = 55000
+    else :
+        total_yang_harus_dibayar = (hari * 50000)
 
 #BIAYA PARKIR RODA 6
 else :
-    print("Masih Dalam Proses Pengerjaan")
+    if lama_parkir <= 1 :
+        total_yang_harus_dibayar = 8000
+    elif lama_parkir <= 5 :
+        print("Lupa Rumus")
+    elif lama_parkir <= 12 :
+        total_yang_harus_dibayar = 35000
+    elif lama_parkir <= 24 :
+        total_yang_harus_dibayar = 70000
+    else:
+        total_yang_harus_dibayar = (hari * 70000)
 
 #MENAMPILKAN TOTAL HARGA PARKIR YANG HARUS DIBAYAR
 print("\033[1;32;40m Total Yang Harus Dibayar : RP", total_yang_harus_dibayar)

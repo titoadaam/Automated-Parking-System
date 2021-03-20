@@ -1,0 +1,36 @@
+#impor waktu
+from datetime import datetime as dtm
+
+#generate waktu masuk
+saat_ini = dtm.now() # tgl dan jam saat ini
+waktu_masuk = dtm.strftime(saat_ini,'%d-%b-%Y %H:%M:%S')
+
+#input tipe kendaraan
+tipe_kendaraan = int(input("""
+Tipe Kendaraan
+1. Roda 2
+2. Roda 4
+3. Roda 6
+Masukan Angka : """))
+if tipe_kendaraan == 1 :
+    tipe_kendaraan = "Roda 2"
+elif tipe_kendaraan == 2 :
+    tipe_kendaraan = "Roda 4"
+elif tipe_kendaraan == 3 :
+    tipe_kendaraan = "Roda 6"
+else :
+    print("KENDARAAN TIDAK TERDAFTAR")
+
+#membuat data waktu
+f = open("waktu.txt", "w")
+f.write(waktu_masuk)
+f.close()
+
+#membuat data tipe kendaraan
+f = open("tipekendaraan.txt", "w")
+f.write(tipe_kendaraan)
+f.close()
+
+#hasil data
+print("Tipe Kendaraan Anda :", (tipe_kendaraan))
+print("Waktu Masuk Anda : ", (waktu_masuk))

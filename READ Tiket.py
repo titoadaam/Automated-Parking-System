@@ -32,17 +32,17 @@ total_hari = hari2 - hari1
 hari = total_hari.days
 
 #HASIL DATA YANG DIPEROLEH DARI SCAN
-print("""
-
-AUTOMATED PARKING SYSTEM BY TITO
-
-""")
+print()
+print("""AUTOMATED PARKING SYSTEM BY TITO""")
+print()
 print("==========================================================")
+print()
 print("Tipe Kendaraan Anda : ", (tipe_kendaraan))
 print("Waktu Masuk Anda : ", waktu_masuk)#, type(waktu_masuk))
 print("waktu Keluar Anda : ", waktu_keluar)#, type(waktu_keluar))
 print("Lama Parkir Anda : ", hitung_lama_parkir)
 #######print("Lama Parkir Yang Harus Dibayar : ", lama_parkir,"Jam")
+print()
 print("==========================================================")
 
 #BIAYA PARKIR RODA 2
@@ -113,4 +113,5 @@ else :
         total_yang_harus_dibayar = hari * 70000 + sub_hari
 
 #MENAMPILKAN TOTAL HARGA PARKIR YANG HARUS DIBAYAR
+print()
 print("\033[1;32;40m Total Yang Harus Dibayar : RP", total_yang_harus_dibayar)

@@ -3,7 +3,7 @@ from datetime import datetime as dtm
 
 #input data waktu parkir
 ##waktu masuk
-data_waktu = open("waktu.txt", "r") # tgl dan jam saat masuk
+data_waktu = open("waktu.txt", "r") # tanggal dan jam saat masuk
 masuk_str1 = data_waktu.readline()
 tgl_text = (masuk_str1)
 waktu_masuk = dtm.strptime(tgl_text,'%d-%b-%Y %H:%M:%S') # konversi string ke date
@@ -57,30 +57,60 @@ elif tipe_kendaraan == "Roda 4" :
     if lama_parkir <= 1 :
         total_yang_harus_dibayar = 6000
     elif lama_parkir <= 5 :
-        print("Lupa Rumus")
+        total_yang_harus_dibayar = 6000+((lama_parkir-1)*2000)
     elif lama_parkir <= 12 :
         total_yang_harus_dibayar = 25000
     elif lama_parkir <= 24 :
         total_yang_harus_dibayar = 55000
+    ##biaya parkir roda 4 jika sudah melewati 1 hari
     else :
-        total_yang_harus_dibayar = (hari * 50000)
+        ###perhitungan jam hari yang sudah terlewati (misal membaca 4 jam pada 2 HARI 4 JAM)
+        sub_lama_parkir = lama_parkir-(hari*24)
+        ####perhitungan biaya jam parkir yang akan ditambah dengan banyaknya hari menginap
+        if sub_lama_parkir <= 1:
+            sub_hari = 6000
+        elif sub_lama_parkir <= 5:
+            sub_hari = 6000+((sub_lama_parkir-1)*2000)
+        elif sub_lama_parkir <= 12:
+            sub_hari = 25000
+        elif sub_lama_parkir <= 24:
+            sub_hari = 55000
+        else :
+            sub_hari = 50000
+        ###total yang harus dibayar
+        print(hari, "Hari Menginap + ", sub_lama_parkir, "Jam Parkir")
+        print(hari*50000, "+", sub_hari)
+        total_yang_harus_dibayar = hari * 50000+sub_hari
 
 #BIAYA PARKIR RODA 6
 else :
     if lama_parkir <= 1 :
         total_yang_harus_dibayar = 8000
     elif lama_parkir <= 5 :
-        print("Lupa Rumus")
+        total_yang_harus_dibayar = 8000+((lama_parkir-1)*3500)
     elif lama_parkir <= 12 :
         total_yang_harus_dibayar = 35000
     elif lama_parkir <= 24 :
         total_yang_harus_dibayar = 70000
     else:
-        total_yang_harus_dibayar = (hari * 70000)
+        total_yang_harus_dibayar = ((hari + 1) * 70000)
+        ###perhitungan jam hari yang sudah terlewati (misal membaca 4 jam pada 2 HARI 4 JAM)
+        sub_lama_parkir = lama_parkir - (hari * 24)
+        ####perhitungan biaya jam parkir yang akan ditambah dengan banyaknya hari menginap
+        if sub_lama_parkir <= 1:
+            sub_hari = 8000
+        elif sub_lama_parkir <= 5:
+            sub_hari = 8000 + ((sub_lama_parkir - 1) * 3500)
+        elif sub_lama_parkir <= 12:
+            sub_hari = 35000
+        elif sub_lama_parkir <= 24:
+            sub_hari = 70000
+        else:
+            sub_hari = 70000
+        ###total yang harus dibayar
+        print(hari, "Hari Menginap + ", sub_lama_parkir, "Jam Parkir")
+        print(hari * 70000, "+", sub_hari)
+        total_yang_harus_dibayar = hari * 70000 + sub_hari
 
 #MENAMPILKAN TOTAL HARGA PARKIR YANG HARUS DIBAYAR
 print("\033[1;32;40m Total Yang Harus Dibayar : RP", total_yang_harus_dibayar)
-
-
-
-
